@@ -14,9 +14,9 @@ import banksys.persistence.exception.AccountCreationException;
 public class AccountVectorTest {
 
 	
-	/*Cenário de Teste - Criando vetor de contas com sucesso
+	/*Cenario de Teste - Criando vetor de contas com sucesso
 	 * Dados de Entrada: Conta Ordinary
-	 * Dados de Saída: Vetor de contas criado e populado*/
+	 * Dados de Saida: Vetor de contas criado e populado*/
 	@Test
 	public void testPopulandoVectorContasNormal() throws AccountCreationException{
 		AccountVector accountVector = new AccountVector();
@@ -28,7 +28,7 @@ public class AccountVectorTest {
 		
 		int numberAfter = accountVector.mumberOfAccounts(); 
 		
-		//verificando o tamanho do vector de contas antes e depois da inserção
+		//verificando o tamanho do vector de contas antes e depois da insercao
 		assertFalse(numberAfter == numberBefore);
 	}
 }
