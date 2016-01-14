@@ -25,7 +25,7 @@ public class AccountVector implements IAccountRepository {
 	}
 
 	public void create(AbstractAccount account) throws AccountCreationException {
-		if (this.findAccount(account.getNumber()) != null) {
+		if (this.findAccount(account.getNumber()) != null || accounts.size()==0) {
 			this.accounts.addElement(account);
 		} else {
 			throw new AccountCreationException("OrdinaryAccount alredy exist!", account.getNumber());
@@ -57,9 +57,12 @@ public class AccountVector implements IAccountRepository {
 	}
 
 	private AbstractAccount findAccount(String number) {
-		if (this.accounts.size() > 0) {
+
+		if (this.accounts.size() > 1) {
+		
 			for (int i = 0; i < this.accounts.size(); i++) {
 				AbstractAccount account = (AbstractAccount) this.accounts.elementAt(i);
+	
 				if (account.getNumber().equals(number)) {
 					return account;
 				}
