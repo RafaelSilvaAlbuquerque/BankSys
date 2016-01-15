@@ -44,6 +44,17 @@ public class AccountVectorTest {
 		accountVector.create(accountA);
 		accountVector.create(accountB);
 	}
+	
+	/*Test Scenario 03: Check method mumberOfAccounts in number of account equals zero and one*/
+	@Test
+	public void testNumeroDeContas() throws AccountCreationException{
+		AccountVector accountVector = new AccountVector();
+		assertEquals(0, accountVector.mumberOfAccounts());;
+		
+		OrdinaryAccount accountA = new OrdinaryAccount("1234");
+		accountVector.create(accountA);
+		assertEquals(1, accountVector.mumberOfAccounts());
+	}
 }
 
 
