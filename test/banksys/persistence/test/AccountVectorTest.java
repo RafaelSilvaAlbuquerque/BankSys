@@ -9,6 +9,7 @@ import banksys.account.OrdinaryAccount;
 import banksys.account.exception.InsufficientFundsException;
 import banksys.account.exception.NegativeAmountException;
 import banksys.persistence.AccountVector;
+import banksys.persistence.exception.AbstractAccountEmptyException;
 import banksys.persistence.exception.AccountCreationException;
 import banksys.persistence.exception.AccountDeletionException;
 
@@ -63,6 +64,14 @@ public class AccountVectorTest {
 		AccountVector accountVector = new AccountVector();
 		accountVector.delete("1234");
 	}
+	
+	/*Test Scenario 05: Check method list account with vector empty*/
+	@Test (expected=AbstractAccountEmptyException.class)
+	public void testListarVetorContasVazio() throws AbstractAccountEmptyException{
+		AccountVector accountVector = new AccountVector();
+		accountVector.list();
+	}
+	
 }
 
 
