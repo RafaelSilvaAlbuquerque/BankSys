@@ -3,6 +3,7 @@ package banksys.persistence;
 import java.util.Vector;
 
 import banksys.account.AbstractAccount;
+import banksys.persistence.exception.AbstractAccountEmptyException;
 import banksys.persistence.exception.AccountCreationException;
 import banksys.persistence.exception.AccountDeletionException;
 import banksys.persistence.exception.AccountNotFoundException;
@@ -32,13 +33,15 @@ public class AccountVector implements IAccountRepository {
 		}
 	}
 
-	public AbstractAccount[] list() {
+	public AbstractAccount[] list() throws AbstractAccountEmptyException {
 		AbstractAccount[] list = null;
 		if (this.accounts.size() > 0) {
 			list = new AbstractAccount[this.accounts.size()];
 			for (int i = 0; i < this.accounts.size(); i++) {
 				list[i] = (AbstractAccount) this.accounts.elementAt(i);
 			}
+		}else {
+			throw new AbstractAccountEmptyException("Vector of account is Empty");
 		}
 		return list;
 	}
