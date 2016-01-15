@@ -17,11 +17,25 @@ public class SpecialAccountTest {
 	public void setUp() throws Exception {
 		account = new SpecialAccount("123ABC");
 	}
-	
+	/**
+	 * Test Scenario: Check if the bonus is being 
+	 * generated correctly in the account.
+	 */
 	@Test
 	public void getBonusTest() throws NegativeAmountException {
 		account.credit(100);
 		assertEquals(1, account.getBonus(), 0);
 	}
+	
+	
+	
+	@Test
+	public void earnBonusTest() throws NegativeAmountException {
+		account.credit(100);
+		account.earnBonus();
+		assertEquals(101, account.getBalance(), 0);
+	}
+	
+	
 
 }
