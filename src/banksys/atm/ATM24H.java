@@ -10,13 +10,14 @@ import banksys.account.TaxAccount;
 import banksys.control.BankController;
 import banksys.control.exception.BankTransactionException;
 import banksys.persistence.AccountVector;
+import banksys.persistence.FilePersistence;
 
 public class ATM24H {
 
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		BankController bank = new BankController(new AccountVector());
+		BankController bank = new BankController(new FilePersistence());
 		boolean loop = true;
 		while (loop) {
 			switch (mainMenu()) {
