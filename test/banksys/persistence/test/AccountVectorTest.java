@@ -72,6 +72,16 @@ public class AccountVectorTest {
 		accountVector.list();
 	}
 	
+	//Test Scenario 06: Check method list account with vector size equals one
+	@Test
+	public void testListarVectorContasPreenchido() throws AccountCreationException, AbstractAccountEmptyException{
+		AccountVector accountVector = new AccountVector();
+		OrdinaryAccount accountA = new OrdinaryAccount("1234");
+		
+		accountVector.create(accountA);
+		
+		assertEquals(1, accountVector.list().length);
+	}
 }
 
 
