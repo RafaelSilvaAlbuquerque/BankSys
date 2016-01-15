@@ -10,6 +10,7 @@ import banksys.account.exception.InsufficientFundsException;
 import banksys.account.exception.NegativeAmountException;
 import banksys.persistence.AccountVector;
 import banksys.persistence.exception.AccountCreationException;
+import banksys.persistence.exception.AccountDeletionException;
 
 public class AccountVectorTest {
 
@@ -49,11 +50,18 @@ public class AccountVectorTest {
 	@Test
 	public void testNumeroDeContas() throws AccountCreationException{
 		AccountVector accountVector = new AccountVector();
-		assertEquals(0, accountVector.mumberOfAccounts());;
+		assertEquals(0, accountVector.mumberOfAccounts());
 		
 		OrdinaryAccount accountA = new OrdinaryAccount("1234");
 		accountVector.create(accountA);
 		assertEquals(1, accountVector.mumberOfAccounts());
+	}
+	
+	/*Test Scenario 04: Check method delete account with account doesn't exist*/
+	@Test (expected=AccountDeletionException.class)
+	public void testRemoverContaQaundoNaoExiste() throws AccountDeletionException{
+		AccountVector accountVector = new AccountVector();
+		accountVector.delete("1234");
 	}
 }
 
