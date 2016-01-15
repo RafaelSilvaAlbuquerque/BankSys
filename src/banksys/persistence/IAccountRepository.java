@@ -1,6 +1,7 @@
 package banksys.persistence;
 
 import banksys.account.AbstractAccount;
+import banksys.persistence.exception.AbstractAccountEmptyException;
 import banksys.persistence.exception.AccountCreationException;
 import banksys.persistence.exception.AccountDeletionException;
 import banksys.persistence.exception.AccountNotFoundException;
@@ -13,7 +14,7 @@ public interface IAccountRepository {
 
 	public AbstractAccount retrieve(String number) throws AccountNotFoundException;
 
-	public AbstractAccount[] list();
+	public AbstractAccount[] list() throws AbstractAccountEmptyException;
 
 	public int mumberOfAccounts();
 	
