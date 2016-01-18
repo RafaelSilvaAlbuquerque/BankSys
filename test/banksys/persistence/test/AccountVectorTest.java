@@ -82,6 +82,25 @@ public class AccountVectorTest {
 		
 		assertEquals(1, accountVector.list().length);
 	}
+	
+	// Test Scenario 07: Check method delete account existent
+	@Test
+	public void testDeleteConta () throws AccountDeletionException, AccountCreationException{
+		AccountVector accountVector = new AccountVector();
+		OrdinaryAccount accountA = new OrdinaryAccount("1234");
+		
+		accountVector.create(accountA);
+		
+		int numberBeforeDeleted = accountVector.mumberOfAccounts();
+		
+		//delete
+		accountVector.delete("1234");
+		
+		int numberAfterDeleted = accountVector.mumberOfAccounts();
+		
+		assertFalse(numberBeforeDeleted == numberAfterDeleted);
+		
+	}
 }
 
 
