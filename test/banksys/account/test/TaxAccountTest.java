@@ -11,7 +11,6 @@ import banksys.account.exception.InsufficientFundsException;
 import banksys.account.exception.NegativeAmountException;
 
 
-
 public class TaxAccountTest {
 
 	private TaxAccount account;
@@ -37,5 +36,15 @@ public class TaxAccountTest {
 	}
 	
 	
+	
+	/*Verifica se o saldo continua o mesmo apos tentar
+	 * debitar um valor negativo
+	 */
+	@Test (expected = NegativeAmountException.class)
+	public void testDebitNegateValue() throws NegativeAmountException, InsufficientFundsException {
+		double saldo = account.getBalance();
+		account.debit(-10);
+		assertEquals(saldo,account.getBalance(),0);
+	}
 
 }
