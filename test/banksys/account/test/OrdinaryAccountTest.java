@@ -9,13 +9,19 @@ import banksys.account.exception.InsufficientFundsException;
 import banksys.account.exception.NegativeAmountException;
 
 public class OrdinaryAccountTest {
-
 	
 	// Test Scenario 1: Debit of account in balance Empty
 	@Test (expected=InsufficientFundsException.class)
 	public void testDebitAccountBalanceEmpty() throws NegativeAmountException, InsufficientFundsException {
 		OrdinaryAccount ordinayAccount = new OrdinaryAccount("1234");
 		ordinayAccount.debit(12);	
+	}
+	
+	//Test Scenari 2: Debit amount < 0 
+	@Test (expected=NegativeAmountException.class)
+	public void testDebitAccountAmountSmaller() throws NegativeAmountException, InsufficientFundsException{
+		OrdinaryAccount ordinayAccount = new OrdinaryAccount("1234");
+		ordinayAccount.debit(-12);	
 	}
 
 }
