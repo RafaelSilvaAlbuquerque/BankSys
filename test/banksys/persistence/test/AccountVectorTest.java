@@ -115,6 +115,15 @@ public class AccountVectorTest {
 
 		assertEquals("1234", accountB.getNumber());
 	}
+	
+
+	// Test Scenario 09:  check method Retrieve account not existent
+	@Test (expected=AccountNotFoundException.class)
+	public void testRetriveAccountNotExcistent() throws AccountNotFoundException{
+		AccountVector accountVector = new AccountVector();
+		accountVector.retrieve("1234");
+	}
+	
 }
 
 
