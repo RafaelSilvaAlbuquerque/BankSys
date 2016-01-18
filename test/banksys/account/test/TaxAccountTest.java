@@ -35,13 +35,24 @@ public class TaxAccountTest {
 		assertEquals(result,account.getBalance(),0);
 	}
 	
+	/*
+	 * Test Scenario: Debit with insufficient funds
+	 */
 	
+	@Test (expected = InsufficientFundsException.class)
+	public void testDebitWithInsufficientFunds() throws NegativeAmountException, InsufficientFundsException {
+		account.credit(10);
+		double result = account.getBalance();
+		account.debit(12);
+		assertEquals(result,account.getBalance(),0);
+	}
+		
 	
 	/*Verifica se o saldo continua o mesmo apos tentar
 	 * debitar um valor negativo
 	 */
 	@Test (expected = NegativeAmountException.class)
-	public void testDebitNegateValue() throws NegativeAmountException, InsufficientFundsException {
+	public void testDebitNegativeValue() throws NegativeAmountException, InsufficientFundsException {
 		double saldo = account.getBalance();
 		account.debit(-10);
 		assertEquals(saldo,account.getBalance(),0);
