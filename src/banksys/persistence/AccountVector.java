@@ -61,7 +61,7 @@ public class AccountVector implements IAccountRepository {
 
 	private AbstractAccount findAccount(String number) {
 
-		if (this.accounts.size() > 1) {
+		if (this.accounts.size() >= 1) {
 		
 			for (int i = 0; i < this.accounts.size(); i++) {
 				AbstractAccount account = (AbstractAccount) this.accounts.elementAt(i);
