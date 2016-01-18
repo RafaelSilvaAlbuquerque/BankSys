@@ -38,7 +38,7 @@ public class SpecialAccountTest {
 	}
 	
 	/*
-	 * Test Scenario: Checking credit negative.
+	 * Test Scenario: Checking Bonus after credit negative.
 	 */
 	@Test (expected = NegativeAmountException.class)
 	public void testBonusNegative() throws NegativeAmountException {
@@ -57,5 +57,26 @@ public class SpecialAccountTest {
 			account.earnBonus();
 			double saldo = account.getBalance();
 			assertEquals(bonus, saldo - 100, 0);
+		}
+		
+		/*
+		 * Test Scenario: Checking credit a negative value.
+		 */
+	
+		@Test(expected = NegativeAmountException.class)
+		public void creditNegativeValueTest() throws NegativeAmountException {
+			double balanceBeforeCredit = account.getBalance();
+			account.credit(-100);
+			double balanceAfterCredit = account.getBalance();
+			assertEquals(balanceBeforeCredit, balanceAfterCredit, 0);
+		}
+		
+		/*
+		 *  Credit positive value
+		 */
+		@Test
+		public void creditPositiveValueTest() throws NegativeAmountException {
+			account.credit(100);
+			assertEquals(100, account.getBalance(), 0);
 		}
 }
