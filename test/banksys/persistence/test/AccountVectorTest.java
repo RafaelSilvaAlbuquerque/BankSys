@@ -12,6 +12,7 @@ import banksys.persistence.AccountVector;
 import banksys.persistence.exception.AbstractAccountEmptyException;
 import banksys.persistence.exception.AccountCreationException;
 import banksys.persistence.exception.AccountDeletionException;
+import banksys.persistence.exception.AccountNotFoundException;
 
 public class AccountVectorTest {
 
@@ -100,6 +101,19 @@ public class AccountVectorTest {
 		
 		assertFalse(numberBeforeDeleted == numberAfterDeleted);
 		
+	}
+	
+	// Test Scenario 08:  check method Retrieve account existent
+	@Test
+	public void testRetriveAccountExcistent() throws AccountCreationException, AccountNotFoundException{
+		AccountVector accountVector = new AccountVector();
+		OrdinaryAccount accountA = new OrdinaryAccount("1234");
+		
+		accountVector.create(accountA);
+		
+		OrdinaryAccount accountB  =  (OrdinaryAccount) accountVector.retrieve("1234");
+
+		assertEquals("1234", accountB.getNumber());
 	}
 }
 
