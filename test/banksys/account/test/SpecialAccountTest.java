@@ -19,7 +19,7 @@ public class SpecialAccountTest {
 	}
 	/**
 	 * Test Scenario: Check if the bonus is being 
-	 * generated correctly in the account.
+	 * recovered correctly in the account.
 	 */
 	@Test
 	public void getBonusTest() throws NegativeAmountException {
@@ -27,8 +27,9 @@ public class SpecialAccountTest {
 		assertEquals(1, account.getBonus(), 0);
 	}
 	
-	
-	
+	/**Test Scenario: Check if the bonus is being 
+	 * generated correctly in the account.
+	*/
 	@Test
 	public void earnBonusTest() throws NegativeAmountException {
 		account.credit(100);
@@ -36,6 +37,25 @@ public class SpecialAccountTest {
 		assertEquals(101, account.getBalance(), 0);
 	}
 	
-	
+	/*
+	 * Test Scenario: Checking credit negative.
+	 */
+	@Test (expected = NegativeAmountException.class)
+	public void testBonusNegative() throws NegativeAmountException {
+		double bonusBeforeCredit = account.getBonus();
+		account.credit(-100);
+		assertEquals(bonusBeforeCredit, account.getBonus(), 0);		
+	}
 
+	/*
+	 * Test Scenario: Properly crediting a value.
+	 */
+		@Test
+		public void generatingCreditBonus() throws NegativeAmountException {
+			account.credit(100);
+			double bonus = account.getBonus();
+			account.earnBonus();
+			double saldo = account.getBalance();
+			assertEquals(bonus, saldo - 100, 0);
+		}
 }
