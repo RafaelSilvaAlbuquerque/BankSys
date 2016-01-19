@@ -11,6 +11,7 @@ import banksys.control.BankController;
 import banksys.control.exception.BankTransactionException;
 import banksys.persistence.AccountVector;
 import banksys.persistence.FilePersistence;
+import banksys.interfaces.InterfaceMainMenu;
 
 public class ATM24H {
 
@@ -18,6 +19,11 @@ public class ATM24H {
 
 	public static void main(String[] args) {
 		BankController bank = new BankController(new FilePersistence());
+		
+		InterfaceMainMenu menu = new InterfaceMainMenu(bank);
+		menu.show();
+		
+		/*
 		boolean loop = true;
 		while (loop) {
 			switch (mainMenu()) {
@@ -148,7 +154,7 @@ public class ATM24H {
 			default:
 				break;
 			}
-		}
+		}*/
 	}
 
 	private static int mainMenu() {
