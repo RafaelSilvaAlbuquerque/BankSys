@@ -11,6 +11,7 @@ import banksys.persistence.IAccountRepository;
 import banksys.persistence.exception.AccountCreationException;
 import banksys.persistence.exception.AccountDeletionException;
 import banksys.persistence.exception.AccountNotFoundException;
+import banksys.persistence.LogData;
 
 public class BankController {
 
@@ -23,6 +24,10 @@ public class BankController {
 	public void addAccount(AbstractAccount account) throws BankTransactionException {
 		try {
 			this.repository.create(account);
+			
+			String log = "Account "+account.getNumber()+" added";
+			LogData.record("log_operations.txt",log);
+			
 		} catch (AccountCreationException ace) {
 			throw new BankTransactionException(ace);
 		}
