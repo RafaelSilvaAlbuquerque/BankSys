@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import banksys.account.SavingsAccount;
+import banksys.account.exception.NegativeAmountException;
 
 
 public class SavingsAccountTest {
@@ -22,11 +23,15 @@ private SavingsAccount account;
 	@After
 	public void tearDown() throws Exception {
 	}
-
+/*
+ * Test Scenario: Properly earn interest.
+ */
 	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void earnInterestTest() throws NegativeAmountException {
+		account.credit(1000);
+		account.earnInterest();
+		assertEquals(1001 , account.getBalance(), 0);
 	}
 
 }
