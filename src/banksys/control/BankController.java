@@ -36,6 +36,10 @@ public class BankController {
 	public void removeAccount(String number) throws BankTransactionException {
 		try {
 			this.repository.delete(number);
+			
+			String log = "Account "+number+" removed";
+			LogData.record("log_operations.txt",log);
+			
 		} catch (AccountDeletionException ade) {
 			throw new BankTransactionException(ade);
 		}
