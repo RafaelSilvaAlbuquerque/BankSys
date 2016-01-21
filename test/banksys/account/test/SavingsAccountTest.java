@@ -33,5 +33,16 @@ private SavingsAccount account;
 		account.earnInterest();
 		assertEquals(1001 , account.getBalance(), 0);
 	}
+	
+	/*
+	 * Test Scenario: Checking Interest after credit negative.
+	 */
+	@Test (expected = NegativeAmountException.class)
+	public void testBonusNegative() throws NegativeAmountException {
+		double balanceBeforeNegativeCredit = account.getBalance();
+		account.credit(-100);
+		account.earnInterest();
+		assertEquals(balanceBeforeNegativeCredit, account.getBalance(), 0);		
+	}
 
 }

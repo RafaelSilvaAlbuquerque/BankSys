@@ -44,6 +44,7 @@ public class SpecialAccountTest {
 	public void testBonusNegative() throws NegativeAmountException {
 		double bonusBeforeCredit = account.getBonus();
 		account.credit(-100);
+		account.earnBonus();
 		assertEquals(bonusBeforeCredit, account.getBonus(), 0);		
 	}
 
