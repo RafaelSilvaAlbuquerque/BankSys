@@ -23,10 +23,9 @@ private SavingsAccount account;
 	@After
 	public void tearDown() throws Exception {
 	}
-/*
- * Test Scenario: Properly earn interest.
- */
-	
+	/*
+	 * Test Scenario: Properly earn interest.
+	 */
 	@Test
 	public void earnInterestTest() throws NegativeAmountException {
 		account.credit(1000);
@@ -53,5 +52,20 @@ private SavingsAccount account;
 		account.earnInterest();
 		assertEquals(0 , account.getBalance(), 0);
 	}
+	
+	/*
+	 * Test Scenario: Earn interest more than once.
+	 */
+	@Test
+	public void earnInterestTwice() throws NegativeAmountException {
+		account.credit(1000);
+		account.earnInterest(); // result expected = 1001
+		account.earnInterest(); // result expected = 1001 + (1001 * 0.001)
+		double result = 1001 + (1001 * 0.001);
+		assertEquals(result , account.getBalance(), 0);
+	}
+	
+	
+	
 	
 }
