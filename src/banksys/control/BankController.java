@@ -76,6 +76,10 @@ public class BankController {
 		}
 		try {
 			account.debit(amount);
+			
+			String log = "Value "+amount+" debited from account "+number;
+			LogData.record("log_operations.txt",log);
+			
 		} catch (InsufficientFundsException ife) {
 			throw new BankTransactionException(ife);
 		} catch (NegativeAmountException nae) {
