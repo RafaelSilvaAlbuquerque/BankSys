@@ -45,4 +45,13 @@ private SavingsAccount account;
 		assertEquals(balanceBeforeNegativeCredit, account.getBalance(), 0);		
 	}
 
+	/*
+	 * Test Scenario: Generate interest for empty account.
+	 */
+	@Test
+	public void emptyAccountTest() throws NegativeAmountException {
+		account.earnInterest();
+		assertEquals(0 , account.getBalance(), 0);
+	}
+	
 }
