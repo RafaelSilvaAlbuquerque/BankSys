@@ -54,6 +54,10 @@ public class BankController {
 		}
 		try {
 			account.credit(amount);
+			
+			String log = "Value "+amount+" credited in account "+number;
+			LogData.record("log_operations.txt",log);
+			
 		} catch (NegativeAmountException nae) {
 			throw new BankTransactionException(nae);
 		}
