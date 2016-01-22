@@ -118,6 +118,10 @@ public class BankController {
 		try {
 			fromAccount.debit(amount);
 			toAccount.credit(amount);
+			
+			String log = "Value "+amount+" transfered from account "+ fromNumber+ "to account "+ toNumber;
+			LogData.record("log_operations.txt",log);
+			
 		} catch (InsufficientFundsException sie) {
 			throw new BankTransactionException(sie);
 		} catch (NegativeAmountException nae) {
