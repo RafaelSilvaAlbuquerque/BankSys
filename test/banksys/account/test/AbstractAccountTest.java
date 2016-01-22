@@ -28,7 +28,7 @@ public class AbstractAccountTest {
 	}
 	
 	//Test Scenario 3 - Check method credit in amount negative
-	@Test (expected=NegativeAmountException.class)
+	@Test(expected=NegativeAmountException.class)
 	public void testMethodCreditAmountNegative() throws NegativeAmountException{
 		AbstractAccount ordinayAccount = new OrdinaryAccount("123");
 		ordinayAccount.credit(-2.0);
