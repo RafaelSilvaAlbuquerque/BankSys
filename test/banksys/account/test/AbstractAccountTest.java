@@ -41,7 +41,7 @@ public class AbstractAccountTest {
 		double balanceBeforeCredit = ordinayAccount.getBalance();
 		ordinayAccount.credit(12.0);
 		double balanceAfterCredit = ordinayAccount.getBalance();
-		assertFalse(balanceBeforeCredit==balanceAfterCredit);
+		assertEquals(12.0, balanceAfterCredit-balanceBeforeCredit,0.01);
 	}
 	
 	
