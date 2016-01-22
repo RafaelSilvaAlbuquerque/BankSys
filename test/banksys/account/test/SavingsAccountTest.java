@@ -66,6 +66,16 @@ private SavingsAccount account;
 	}
 	
 	
+	/*
+	 * Test Scenario: Earn interest into account with a balance with decimals.
+	 */
+	@Test
+	public void earnInterestBallanceWithDecimals() throws NegativeAmountException {
+		account.credit(105.2);
+		account.earnInterest(); 		
+		assertEquals(105.3052 , account.getBalance(), 0);
+	}
+	
 	
 	
 }
