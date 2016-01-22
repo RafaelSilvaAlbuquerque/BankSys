@@ -142,6 +142,10 @@ public class BankController {
 
 		if (auxAccount instanceof SavingsAccount) {
 			((SavingsAccount) auxAccount).earnInterest();
+			
+			String log = "Account "+number+" have got interest";
+			LogData.record("log_operations.txt",log);
+			
 		} else {
 			throw new IncompatibleAccountException(number);
 		}
