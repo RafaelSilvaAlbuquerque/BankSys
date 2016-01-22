@@ -164,6 +164,10 @@ public class BankController {
 
 		if (auxAccount instanceof SpecialAccount) {
 			((SpecialAccount) auxAccount).earnBonus();
+			
+			String log = "Account "+number+" have got bonus";
+			LogData.record("log_operations.txt",log);
+			
 		} else {
 			throw new IncompatibleAccountException(number);
 		}
