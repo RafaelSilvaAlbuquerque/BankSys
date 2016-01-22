@@ -27,4 +27,19 @@ public class OrdinaryAccountTest {
 		ordinayAccount.debit(-12);
 	}
 
+	// Test Scenari 3: Debit normal
+	@Test
+	public void testDebitNormal() throws NegativeAmountException, InsufficientFundsException {
+		OrdinaryAccount ordinayAccount = new OrdinaryAccount("1234");
+		ordinayAccount.credit(100);
+
+		double balanceBeforeDebit = ordinayAccount.getBalance();
+
+		ordinayAccount.debit(50);
+
+		double balanceAfterDebit = ordinayAccount.getBalance();
+
+		assertFalse(balanceBeforeDebit == balanceAfterDebit);
+	}
+
 }
