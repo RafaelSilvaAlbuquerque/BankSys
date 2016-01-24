@@ -15,9 +15,10 @@ private AbstractAccount account;
 	
 	@Before
 	public void setUp() throws Exception {
-	account = new SavingsAccount("12345");
+	account = new SavingsAccount("123456");
 	}
 
+	
 	@After
 	public void tearDown() throws Exception {
 	}
