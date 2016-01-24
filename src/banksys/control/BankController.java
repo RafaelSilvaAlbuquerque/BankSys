@@ -118,6 +118,10 @@ public class BankController {
 		try {
 			fromAccount.debit(amount);
 			toAccount.credit(amount);
+			
+			String log = "Value "+amount+" transfered from account "+ fromNumber+ "to account "+ toNumber;
+			LogData.record("log_operations.txt",log);
+			
 		} catch (InsufficientFundsException sie) {
 			throw new BankTransactionException(sie);
 		} catch (NegativeAmountException nae) {
@@ -138,6 +142,10 @@ public class BankController {
 
 		if (auxAccount instanceof SavingsAccount) {
 			((SavingsAccount) auxAccount).earnInterest();
+			
+			String log = "Account "+number+" have got interest";
+			LogData.record("log_operations.txt",log);
+			
 		} else {
 			throw new IncompatibleAccountException(number);
 		}
@@ -156,6 +164,10 @@ public class BankController {
 
 		if (auxAccount instanceof SpecialAccount) {
 			((SpecialAccount) auxAccount).earnBonus();
+			
+			String log = "Account "+number+" have got bonus";
+			LogData.record("log_operations.txt",log);
+			
 		} else {
 			throw new IncompatibleAccountException(number);
 		}
