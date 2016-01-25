@@ -7,7 +7,7 @@ import banksys.account.exception.NegativeAmountException;
 
 public abstract class AbstractAccount implements Serializable{
 
-	protected String number;
+	protected final String number;
 	protected double balance;
 
 	public AbstractAccount(String number) {
