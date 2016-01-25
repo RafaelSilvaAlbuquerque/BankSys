@@ -24,7 +24,7 @@ public class AbstractAccountTest {
 	@Test
 	public void testCheckMethodGetBalance(){
 		AbstractAccount ordinayAccount = new OrdinaryAccount("123");
-		assertEquals(0.0, ordinayAccount.getBalance(),0);
+		assertTrue(0.0 == ordinayAccount.getBalance());
 	}
 	
 	//Test Scenario 3 - Check method credit in amount negative
