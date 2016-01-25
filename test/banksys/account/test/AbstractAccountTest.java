@@ -29,4 +29,14 @@ public class AbstractAccountTest {
 			AbstractAccount ordinayAccount = new OrdinaryAccount("123");
 			ordinayAccount.credit(-2.0);
 		}
+		
+		//Test Scenario 4 - Check method credit amount positive
+		@Test
+		public void testMethodCreditAmountPositive() throws NegativeAmountException{
+			AbstractAccount ordinayAccount = new OrdinaryAccount("123");
+			double balanceBeforeCredit = ordinayAccount.getBalance();
+			ordinayAccount.credit(12.0);
+			double balanceAfterCredit = ordinayAccount.getBalance();
+			assertTrue(12.0 == (balanceAfterCredit-balanceBeforeCredit));
+		}
 }
