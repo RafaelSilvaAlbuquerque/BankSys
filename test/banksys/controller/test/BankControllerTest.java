@@ -35,7 +35,7 @@ public class BankControllerTest {
 
 		/*
 		 * Test Scenario: Test Scenario addAccount Controller.
-		 * 
+		 * Atualizar o método "mumberof" por "numberof"
 		 */
 		@Test
 		public void addAccountTest() throws BankTransactionException  {
@@ -45,6 +45,40 @@ public class BankControllerTest {
 		}
 
 
+
+		/*
+		 * Test Scenario: Test Scenario add 2 accounts  - Controller.
+		 */
+		@Test
+		public void addTwoAccountTest() throws BankTransactionException  {
+		controller.addAccount(account);
+		controller.addAccount(account2);
+		assertEquals(2 , repository.mumberOfAccounts(), 0);
+
+		}
+
+
+		/*
+		 * Test Scenario: Test Scenario remove 1 account  - Controller.
+		 */
+		@Test
+		public void removeAccountTest() throws BankTransactionException  {
+		controller.addAccount(account);
+		controller.addAccount(account2);
+		controller.removeAccount("12345");
+		assertEquals(1 , repository.mumberOfAccounts(), 0);
+
+		}
+
+	       /*
+		* Test Scenario 04: Check method remove account with account doesn't exist
+		*/
+		@Test (expected=AccountDeletionException.class)
+		public void testRemoverContaQaundoNaoExiste() throws AccountDeletionException, BankTransactionException{
+			controller.addAccount(account);
+			controller.removeAccount("777");
+			controller.removeAccount("1234");
+		}
 
 
 }
