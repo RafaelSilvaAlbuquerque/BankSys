@@ -22,7 +22,7 @@ public abstract class AbstractAccount implements Serializable{
 			throw new NegativeAmountException(amount);
 		}
 	}
-
+	//method debit amount in accout 
 	public abstract void debit(double amount) throws NegativeAmountException, InsufficientFundsException;
 
 	public String getNumber() {

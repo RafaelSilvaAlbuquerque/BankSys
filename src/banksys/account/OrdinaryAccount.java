@@ -4,17 +4,18 @@ import java.io.Serializable;
 
 import banksys.account.exception.InsufficientFundsException;
 import banksys.account.exception.NegativeAmountException;
-//class OrdinaryAccount 
+/*class OrdinaryAccount */
 public class OrdinaryAccount extends AbstractAccount implements Serializable {
 
+	
 	private static final long serialVersionUID = 1L;
 
-	//method instantiation account 
+	/*method instantiation account*/ 
 	public OrdinaryAccount(String number) {
-		super(number);
+	  super (number);
 	}
 	
-	//method debit amount in account
+	/*method debit amount in account*/
 	public void debit(double amount) throws NegativeAmountException, InsufficientFundsException {
 		if (amount > 0) {
 			if (this.balance >= amount) {

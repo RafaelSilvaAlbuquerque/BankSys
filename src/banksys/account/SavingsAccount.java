@@ -10,10 +10,13 @@ public class SavingsAccount extends OrdinaryAccount implements Serializable {
 		super(number);
 	}
 
-	public void earnInterest() {
+	public void earnInterest() throws NegativeAmountException {
 		try {
 			this.credit(this.getBalance() * 0.001);
 		} catch (NegativeAmountException e) {
+			throw e;
 		}
 	}
 }
+
+

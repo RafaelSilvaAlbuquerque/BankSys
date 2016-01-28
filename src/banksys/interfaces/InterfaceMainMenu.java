@@ -1,11 +1,14 @@
 package banksys.interfaces;
 
 import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import banksys.account.exception.NegativeAmountException;
 import banksys.control.BankController;
+
 
 
 import java.awt.event.ActionListener;
@@ -88,7 +91,12 @@ private BankController bank;
 		earnInterest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
   				InterfaceEarnInterest interfaceInterest = new InterfaceEarnInterest(bank);
-  				interfaceInterest.show();
+  				try {
+					interfaceInterest.show();
+				} catch (NegativeAmountException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
   			}
 		});
 		

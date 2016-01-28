@@ -132,7 +132,7 @@ public class BankController {
 		this.repository.save();
 	}
 
-	public void doEarnInterest(String number) throws BankTransactionException, IncompatibleAccountException {
+	public void doEarnInterest(String number) throws BankTransactionException, IncompatibleAccountException, NegativeAmountException {
 		AbstractAccount auxAccount;
 		try {
 			auxAccount = this.repository.retrieve(number);
