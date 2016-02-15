@@ -167,8 +167,8 @@ public class BankControllerTest {
 			controller.doEarnInterest("0000");
 		}
 		
-		/*@Test
+		@Test
 		public void falha(){
 			fail();
-		}*/
+		}
 }
