@@ -167,16 +167,8 @@ public class BankControllerTest {
 			controller.doEarnInterest("0000");
 		}
 		
-		/**
-		 * Test Scenario : DO Earn Bonus with Success
-		 * @throws NegativeAmountException 
-		 * 
-		 */
-		@Test 
-		public void doEarnBonusTest() throws BankTransactionException, NegativeAmountException  {
-			controller.addAccount(account);
-			controller.doCredit("12345", 100);
-			controller.doEarnBonus("12345");
-			assertEquals(101, controller.getBalance("12345"), 0);
-		}
+		/*@Test
+		public void falha(){
+			fail();
+		}*/
 }
