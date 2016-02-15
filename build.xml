@@ -1,4 +1,4 @@
-<project name="SB06" basedir="." default="test">
+<project name="BankSys" basedir="." default="test">
 	<property name="srcDir" value="src" />
 	<property name="testDir" value="test" />
 	<property name="libDir" value="lib" />
