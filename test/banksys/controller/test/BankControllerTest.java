@@ -46,6 +46,13 @@ public class BankControllerTest {
 
 
 
+		@Test
+		public void removeAccountTest() throws BankTransactionException  {
+		controller.addAccount(account);
+		controller.removeAccount(account.getNumber());
+		assertEquals(0, repository.mumberOfAccounts(), 0);
+
+		}
 
 		
 
