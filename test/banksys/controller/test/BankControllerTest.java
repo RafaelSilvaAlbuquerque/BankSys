@@ -138,5 +138,45 @@ public class BankControllerTest {
 			
 		}
 		
+
 		
+		/**
+		 * Test Scenario : Earn Interest with success
+		 * @throws NegativeAmountException 
+		 * 
+		 */
+		@Test
+		public void earnInterestTest() throws BankTransactionException, NegativeAmountException  {
+			controller.addAccount(account);
+			controller.doCredit("12345", 250);
+			controller.doEarnInterest("12345");
+			double valueWithInterest = 250 + (250* 0.001); 
+			assertEquals(valueWithInterest, controller.getBalance("12345"), 0);
+			
+		}
+		
+		/**
+		 * Test Scenario : Earn Interest in an Inexistent Account
+		 * @throws NegativeAmountException 
+		 * 
+		 */
+		@Test (expected = ArrayIndexOutOfBoundsException.class )
+		public void doEarnInterestInexistentAccountTest() throws BankTransactionException, NegativeAmountException  {
+			controller.addAccount(account);
+			controller.doCredit("12345", 250);
+			controller.doEarnInterest("0000");
+		}
+		
+		/**
+		 * Test Scenario : DO Earn Bonus with Success
+		 * @throws NegativeAmountException 
+		 * 
+		 */
+		@Test 
+		public void doEarnBonusTest() throws BankTransactionException, NegativeAmountException  {
+			controller.addAccount(account);
+			controller.doCredit("12345", 100);
+			controller.doEarnBonus("12345");
+			assertEquals(101, controller.getBalance("12345"), 0);
+		}
 }
