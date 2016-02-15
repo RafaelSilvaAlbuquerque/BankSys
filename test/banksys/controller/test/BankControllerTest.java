@@ -9,10 +9,12 @@ import org.junit.Test;
 import banksys.account.AbstractAccount;
 import banksys.account.SavingsAccount;
 import banksys.account.SpecialAccount;
+import banksys.account.exception.NegativeAmountException;
 import banksys.control.BankController;
 import banksys.control.exception.BankTransactionException;
 import banksys.persistence.AccountVector;
 import banksys.persistence.IAccountRepository;
+import banksys.persistence.exception.AccountDeletionException;
 
 
 public class BankControllerTest {
@@ -35,26 +37,52 @@ public class BankControllerTest {
 
 		/*
 		 * Test Scenario: Test Scenario addAccount Controller.
-		 * Atualizar o método "mumberof" por "numberof"
+		 * 
 		 */
 		@Test
 		public void addAccountTest() throws BankTransactionException  {
 		controller.addAccount(account);
-		assertEquals(1 , repository.mumberOfAccounts(), 0);
+		assertEquals(1 , repository.numberOfAccounts(), 0);
 
 		}
 
-
+		/*
+		 * Test Scenario: Test Scenario removeAccount Controller.
+		 * 
+		 */
 
 		@Test
 		public void removeAccountTest() throws BankTransactionException  {
 		controller.addAccount(account);
 		controller.removeAccount(account.getNumber());
-		assertEquals(0, repository.mumberOfAccounts(), 0);
+		assertEquals(0, repository.numberOfAccounts(), 0);
 
 		}
 
+		/**
+		 * Test Scenario: Remove Account with inexistent number
+		 * @throws BankTransactionException
+		 */
 		
+		@Test(expected = BankTransactionException.class)
+		public void removeAccountNullTest() throws BankTransactionException  {
+			controller.removeAccount("113489");
+			
+		}
+		
+		/**
+		 * Test Scenario: do credit test
+		 * 
+		 */
+		
+		@Test
+		public void doCreditTest() throws BankTransactionException  {
+		controller.addAccount(account);
+		controller.doCredit("12345", 250);
+		assertEquals(250, account.getBalance(), 0);
+			
+		}
 
+		
 
 }

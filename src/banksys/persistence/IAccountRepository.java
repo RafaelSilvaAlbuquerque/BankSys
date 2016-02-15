@@ -16,7 +16,7 @@ public interface IAccountRepository {
 
 	public AbstractAccount[] list() throws AbstractAccountEmptyException;
 
-	public int mumberOfAccounts();
+	public int numberOfAccounts();
 	
 	public void save();
 }

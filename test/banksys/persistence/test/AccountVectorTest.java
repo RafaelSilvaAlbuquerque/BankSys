@@ -25,11 +25,11 @@ public class AccountVectorTest {
 		AccountVector accountVector = new AccountVector();
 		OrdinaryAccount account = new OrdinaryAccount("1234");
 		
-		int numberBefore = accountVector.mumberOfAccounts(); 
+		int numberBefore = accountVector.numberOfAccounts(); 
 		
 		accountVector.create(account);
 		
-		int numberAfter = accountVector.mumberOfAccounts(); 
+		int numberAfter = accountVector.numberOfAccounts(); 
 		
 		//verificando o tamanho do vector de contas antes e depois da insercao
 		assertFalse(numberAfter == numberBefore);
@@ -52,11 +52,11 @@ public class AccountVectorTest {
 	@Test
 	public void testNumeroDeContas() throws AccountCreationException{
 		AccountVector accountVector = new AccountVector();
-		assertEquals(0, accountVector.mumberOfAccounts());
+		assertEquals(0, accountVector.numberOfAccounts());
 		
 		OrdinaryAccount accountA = new OrdinaryAccount("1234");
 		accountVector.create(accountA);
-		assertEquals(1, accountVector.mumberOfAccounts());
+		assertEquals(1, accountVector.numberOfAccounts());
 	}
 	
 	/*Test Scenario 04: Check method delete account with account doesn't exist*/
@@ -92,12 +92,12 @@ public class AccountVectorTest {
 		
 		accountVector.create(accountA);
 		
-		int numberBeforeDeleted = accountVector.mumberOfAccounts();
+		int numberBeforeDeleted = accountVector.numberOfAccounts();
 		
 		//delete
 		accountVector.delete("1234");
 		
-		int numberAfterDeleted = accountVector.mumberOfAccounts();
+		int numberAfterDeleted = accountVector.numberOfAccounts();
 		
 		assertFalse(numberBeforeDeleted == numberAfterDeleted);
 		

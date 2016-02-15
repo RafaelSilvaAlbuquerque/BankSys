@@ -78,7 +78,7 @@ public class FilePersistence implements IAccountRepository{
 	}
 
 	@Override
-	public int mumberOfAccounts() {
+	public int numberOfAccounts() {
 		return this.accounts.size();
 	}
 	
