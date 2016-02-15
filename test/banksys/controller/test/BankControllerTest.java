@@ -71,7 +71,7 @@ public class BankControllerTest {
 		}
 		
 		/**
-		 * Test Scenario: do credit test
+		 * Test Scenario Controller: do credit test
 		 * 
 		 */
 		
@@ -83,6 +83,60 @@ public class BankControllerTest {
 			
 		}
 
+
+		/**
+		 * Test Scenario Controller: do debit test
+		 * 
+		 */
+		
+		@Test
+		public void doDebitTest() throws BankTransactionException  {
+		controller.addAccount(account);
+		controller.doCredit("12345", 250);
+		controller.doDebit("12345", 100);
+		assertEquals(150, account.getBalance(), 0);
+			
+		}
 		
 
+		/**
+		 * Test Scenario : debit value greater than balance
+		 * 
+		 */
+		
+		@Test (expected = BankTransactionException.class )
+		public void doDebitInvalidTest() throws BankTransactionException  {
+		controller.addAccount(account);
+		controller.doCredit("12345", 250);
+		controller.doDebit("12345", 300);
+	
+			
+		}
+		
+		/**
+		 * Test Scenario : debit value in empty Account
+		 * 
+		 */
+		
+		@Test (expected = BankTransactionException.class )
+		public void doDebitEmptyAccountTest() throws BankTransactionException  {
+		controller.addAccount(account);
+		controller.doDebit("12345", 300);
+				
+		}
+		
+		
+		/**
+		 * Test Scenario : get Balance Test
+		 * 
+		 */
+		@Test
+		public void getBalanceTest() throws BankTransactionException  {
+			controller.addAccount(account);
+			controller.doCredit("12345", 250);
+			assertEquals(250, controller.getBalance("12345"), 0);
+			
+		}
+		
+		
 }
