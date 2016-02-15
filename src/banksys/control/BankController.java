@@ -25,8 +25,7 @@ public class BankController {
 		try {
 			this.repository.create(account);
 			
-			String log = "Account "+account.getNumber()+" added";
-			LogData.record("log_operations.txt",log);
+			this.logOperation("Account "+account.getNumber()+" added");
 			
 		} catch (AccountCreationException ace) {
 			throw new BankTransactionException(ace);
@@ -37,8 +36,7 @@ public class BankController {
 		try {
 			this.repository.delete(number);
 			
-			String log = "Account "+number+" removed";
-			LogData.record("log_operations.txt",log);
+			this.logOperation("Account "+number+" removed");
 			
 		} catch (AccountDeletionException ade) {
 			throw new BankTransactionException(ade);
@@ -55,8 +53,7 @@ public class BankController {
 		try {
 			account.credit(amount);
 			
-			String log = "Value "+amount+" credited in account "+number;
-			LogData.record("log_operations.txt",log);
+			this.logOperation("Value "+amount+" credited in account "+number);
 			
 		} catch (NegativeAmountException nae) {
 			throw new BankTransactionException(nae);
@@ -77,8 +74,7 @@ public class BankController {
 		try {
 			account.debit(amount);
 			
-			String log = "Value "+amount+" debited from account "+number;
-			LogData.record("log_operations.txt",log);
+			this.logOperation("Value "+amount+" debited from account "+number);
 			
 		} catch (InsufficientFundsException ife) {
 			throw new BankTransactionException(ife);
@@ -119,8 +115,7 @@ public class BankController {
 			fromAccount.debit(amount);
 			toAccount.credit(amount);
 			
-			String log = "Value "+amount+" transfered from account "+ fromNumber+ "to account "+ toNumber;
-			LogData.record("log_operations.txt",log);
+			this.logOperation("Value "+amount+" transfered from account "+ fromNumber+ "to account "+ toNumber);
 			
 		} catch (InsufficientFundsException sie) {
 			throw new BankTransactionException(sie);
@@ -142,9 +137,8 @@ public class BankController {
 
 		if (auxAccount instanceof SavingsAccount) {
 			((SavingsAccount) auxAccount).earnInterest();
-			
-			String log = "Account "+number+" have got interest";
-			LogData.record("log_operations.txt",log);
+						
+			this.logOperation("Account "+number+" have got interest");
 			
 		} else {
 			throw new IncompatibleAccountException(number);
@@ -165,8 +159,7 @@ public class BankController {
 		if (auxAccount instanceof SpecialAccount) {
 			((SpecialAccount) auxAccount).earnBonus();
 			
-			String log = "Account "+number+" have got bonus";
-			LogData.record("log_operations.txt",log);
+			this.logOperation("Account "+number+" have got bonus");
 			
 		} else {
 			throw new IncompatibleAccountException(number);
@@ -174,5 +167,9 @@ public class BankController {
 		
 		//save repository in file
 		this.repository.save();
+	}
+	
+	public void logOperation(String log){
+		LogData.record("log_operations.txt",log);
 	}
 }
